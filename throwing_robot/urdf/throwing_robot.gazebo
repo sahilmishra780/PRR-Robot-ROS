@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<robot>
+
+    <!-- ros_control plugin -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/throwing_robot</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+    </gazebo>
+    
+    <!-- base_link -->
+    <gazebo reference="base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- Slider-Link -->
+    <gazebo reference="slider_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <!-- Link-1 -->
+    <gazebo reference="link_1">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <!-- Link-2 -->
+    <gazebo reference="link_2">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+</robot>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>throwing_robot</name>
+  <version>0.0.0</version>
+  <description>The throwing_robot package</description>
+  <maintainer email="sahilmishra780@gmail.com">Sahil Mishra</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  
+  <export>
+
+  </export>
+</package>

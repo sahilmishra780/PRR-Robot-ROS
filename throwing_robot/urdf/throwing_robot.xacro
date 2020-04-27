@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<robot name="throwing_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find throwing_robot)/urdf/throwing_robot.gazebo" />
+  <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world" />
+
+  <joint name="fixed" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-3.3464E-16 0.00093487 0.97432" rpy="0 0 0" />
+      <mass value="138.01" />
+      <inertia ixx="30.971" ixy="0.030675" ixz="12.599" iyy="60.342" iyz="-0.030832" izz="30.009" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.50196 0.50196 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="slider_link">
+    <inertial>
+      <origin xyz="-0.0013541 0.032919 0.0059959" rpy="0 0 0" />
+      <mass value="8.4074" />
+      <inertia ixx="0.030564" ixy="-0.00036594" ixz="-0.00060771" iyy="0.037545" iyz="-0.0079971" izz="0.039782" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/slider_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/slider_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="P1" type="prismatic">
+    <origin xyz="0 0 1.24" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="slider_link" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.5" upper="0.5" effort="10000" velocity="10000" />
+    <dynamics damping="0.2" friction="0.2" />
+  </joint>
+  <link name="link_1">
+    <inertial>
+      <origin xyz="0.039014 1.3732E-18 -0.25606" rpy="0 0 0" />
+      <mass value="19.055" />
+      <inertia ixx="0.7527" ixy="-8.0388E-19" ixz="-0.0044867" iyy="0.75156" iyz="1.1678E-17" izz="0.01639" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/link_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R1" type="revolute">
+    <origin xyz="0 0 -0.075" rpy="0 0 0" />
+    <parent link="slider_link" />
+    <child link="link_1" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-3.14159" upper="3.14159" effort="10000" velocity="10000" />
+    <dynamics damping="0.2" friction="0.2" />
+  </joint>
+  <link name="link_2">
+    <inertial>
+      <origin xyz="-0.039704 7.2711E-18 -0.25321" rpy="0 0 0" />
+      <mass value="18.834" />
+      <inertia ixx="0.7394" ixy="-1.4267E-18" ixz="0.0012814" iyy="0.73747" iyz="-9.0628E-18" izz="0.015575" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/link_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R2" type="revolute">
+    <origin xyz="0 0 -0.5" rpy="0 0 0" />
+    <parent link="link_1" />
+    <child link="link_2" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-3.1" upper="3.1" effort="10000" velocity="10000" />
+  </joint>
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="P1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+</robot>

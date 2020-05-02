@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="ball">
+    <pose>0 0 0 0 0 0</pose>
+    <static>false</static>
+    <link name="link">
+      <inertial>
+        <mass>0.05</mass>
+          <inertia>
+            <ixx>3.33e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.33e-05</iyy>
+            <iyz>0</iyz>
+            <izz>1.33e-05</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+            <box>
+              <size>0.04 0.08 0.04</size>
+            </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.04 0.08 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

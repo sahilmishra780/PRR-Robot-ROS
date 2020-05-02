@@ -11,5 +11,10 @@
       <uri>model://sun</uri>
     </include>
 
+    <include>
+      <uri>model://ball</uri>
+      <static>false</static>
+      <pose>0 0 0.08 0 0 0</pose>
+    </include>
   </world>
 </sdf>

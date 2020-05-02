@@ -5,15 +5,15 @@
   <xacro:include filename="$(find throwing_robot)/urdf/throwing_robot.gazebo" />
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world" />
-
+  
   <joint name="fixed" type="fixed">
     <parent link="world" />
     <child link="base_link" />
   </joint>
-
+  
   <link name="base_link">
     <inertial>
-      <origin xyz="-3.3464E-16 0.00093487 0.97432" rpy="0 0 0" />
+      <origin xyz="7.7225E-17 0.00093487 0.97432" rpy="0 0 0" />
       <mass value="138.01" />
       <inertia ixx="30.971" ixy="0.030675" ixz="12.599" iyy="60.342" iyz="-0.030832" izz="30.009" />
     </inertial>
@@ -60,14 +60,14 @@
     <parent link="base_link" />
     <child link="slider_link" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.5" upper="0.5" effort="10000" velocity="10000" />
+    <limit lower="-0.5" upper="0.5" effort="1000" velocity="1000" />
     <dynamics damping="0.2" friction="0.2" />
   </joint>
   <link name="link_1">
     <inertial>
-      <origin xyz="0.039014 1.3732E-18 -0.25606" rpy="0 0 0" />
+      <origin xyz="0.039014 1.4608E-18 -0.25606" rpy="0 0 0" />
       <mass value="19.055" />
-      <inertia ixx="0.7527" ixy="-8.0388E-19" ixz="-0.0044867" iyy="0.75156" iyz="1.1678E-17" izz="0.01639" />
+      <inertia ixx="0.7527" ixy="-9.2485E-19" ixz="-0.0044867" iyy="0.75156" iyz="1.1809E-17" izz="0.01639" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -90,14 +90,14 @@
     <parent link="slider_link" />
     <child link="link_1" />
     <axis xyz="-1 0 0" />
-    <limit lower="-3.14159" upper="3.14159" effort="10000" velocity="10000" />
+    <limit lower="-3.14" upper="3.14" effort="1000" velocity="1000" />
     <dynamics damping="0.2" friction="0.2" />
   </joint>
   <link name="link_2">
     <inertial>
-      <origin xyz="-0.039704 7.2711E-18 -0.25321" rpy="0 0 0" />
-      <mass value="18.834" />
-      <inertia ixx="0.7394" ixy="-1.4267E-18" ixz="0.0012814" iyy="0.73747" iyz="-9.0628E-18" izz="0.015575" />
+      <origin xyz="-0.035673 0.0020621 -0.25345" rpy="0 0 0" />
+      <mass value="19.624" />
+      <inertia ixx="0.70653" ixy="-0.0014436" ixz="0.019658" iyy="0.70195" iyz="0.0093093" izz="0.023988" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -120,7 +120,67 @@
     <parent link="link_1" />
     <child link="link_2" />
     <axis xyz="-1 0 0" />
-    <limit lower="-3.1" upper="3.1" effort="10000" velocity="10000" />
+    <limit lower="-3.14" upper="3.14" effort="1000" velocity="1000" />
+    <dynamics damping="0.2" friction="0.2" />
+  </joint>
+  <link name="finger_1">
+    <inertial>
+      <origin xyz="2.7311E-17 0.042014 0.019387" rpy="0 0 0" />
+      <mass value="0.68589" />
+      <inertia ixx="0.00067063" ixy="3.7499E-21" ixz="-7.5041E-20" iyy="0.00085141" iyz="-9.5097E-06" izz="0.00021618" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/finger_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.50196 1 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/finger_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="P2" type="prismatic">
+    <origin xyz="0 0 -0.585" rpy="0 0 0" />
+    <parent link="link_2" />
+    <child link="finger_1" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="0.04" effort="1000" velocity="1000" />
+    <dynamics damping="0.2" friction="0.2" />
+  </joint>
+  <link name="finger_2">
+    <inertial>
+      <origin xyz="9.273E-17 -0.042014 0.019387" rpy="0 0 0" />
+      <mass value="0.68589" />
+      <inertia ixx="0.00067063" ixy="-8.4321E-21" ixz="4.6544E-19" iyy="0.00085141" iyz="9.5097E-06" izz="0.00021618" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/finger_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.50196 1 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://throwing_robot/meshes/finger_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="F1" type="fixed">
+    <origin xyz="0 0 -0.585" rpy="0 0 0" />
+    <parent link="link_2" />
+    <child link="finger_2" />
+    <axis xyz="0 0 0" />
+    <limit lower="0" upper="0" effort="1000" velocity="1000" />
   </joint>
 
   <transmission name="tran1">
@@ -133,7 +193,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  
+
   <transmission name="tran2">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="R1">
@@ -155,5 +215,16 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="P2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
 </robot>

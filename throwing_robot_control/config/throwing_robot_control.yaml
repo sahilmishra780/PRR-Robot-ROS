@@ -2,7 +2,8 @@ throwing_robot:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 50  
+    publish_rate: 200
+
   
   # Position Controllers ---------------------------------------
   joint1_position_controller:
@@ -12,8 +13,12 @@ throwing_robot:
   joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: R1
-    pid: {p: 300.0, i: 0.1, d: 200.0}
+    pid: {p: 1000.0, i: 100, d: 300}
   joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: R2
-    pid: {p: 300.0, i: 0.1, d: 200.0}
+    pid: {p: 1000.0, i: 100, d: 200}
+  joint4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: P2
+    pid: {p: 6000.0, i: 100, d: 25}

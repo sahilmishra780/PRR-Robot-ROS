@@ -1,7 +1,12 @@
 <launch>
-
+    <!--
+Pease run the command 
+export GAZEBO_MODEL_PATH=/home/sahil/catkin_ws/src/meen612_robot/throwing_robot_gazebo/models:$GAZEBO_MODEL_PATH
+before runnning
+roslaunch throwing_robot_gazebo throwing_robot.launch
+-->
     <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-    <arg name="paused" default="false" />
+    <arg name="paused" default="true" />
     <arg name="use_sim_time" default="true" />
     <arg name="gui" default="true" />
     <arg name="headless" default="false" />
@@ -17,12 +22,10 @@
         <arg name="headless" value="$(arg headless)" />
     </include>
 
+    
     <!-- Load the URDF into the ROS Parameter Server -->
-    <param name="robot_description" 
-    command="$(find xacro)/xacro --inorder '$(find throwing_robot)/urdf/throwing_robot.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find throwing_robot)/urdf/throwing_robot.xacro'" />
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
-    args="-urdf -model throwing_robot -param robot_description" />
-
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model throwing_robot -param robot_description" />
 </launch>

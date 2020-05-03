@@ -16,5 +16,12 @@
       <static>false</static>
       <pose>0 0 0.08 0 0 0</pose>
     </include>
+
+    <include>
+      <uri>model://arena</uri>
+      <static>false</static>
+      <pose>0 -4 0 1.57 0 3.1415</pose>
+    </include>
+    
   </world>
 </sdf>

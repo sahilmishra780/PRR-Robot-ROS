@@ -11,7 +11,7 @@
     
     <!-- base_link -->
     <gazebo reference="base_link">
-        <material>Gazebo/Grey</material>
+        <material>Gazebo/Blue</material>
     </gazebo>
 
     <!-- Slider-Link -->
@@ -21,22 +21,22 @@
 
     <!-- Link-1 -->
     <gazebo reference="link_1">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/Yellow</material>
     </gazebo>
 
     <!-- Link-2 -->
     <gazebo reference="link_2">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/Yellow</material>
     </gazebo>
 
     <gazebo reference="finger_1">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/Green</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
     </gazebo>
 
     <gazebo reference="finger_2">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/Green</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
     </gazebo>

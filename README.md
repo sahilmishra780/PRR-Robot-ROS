@@ -17,7 +17,8 @@ Publish Commands:<br>
 ``rostopic pub -1 /throwing_robot/joint2_position_controller/command std_msgs/Float64 "data: 0.5"``<br>
 ``rostopic pub -1 /throwing_robot/joint3_position_controller/command std_msgs/Float64 "data: 2"``<br>
 
-Run Thrwoing Simulation:<br>
+## Run Throwing Simulation:<br><br>
+In a new terminal<br>
 ``roslaunch throwing_robot_gazebo throwing_robot.launch``<br>
 Now in a new terminal <br>
 ``roslaunch throwing_robot_control throwing_robot_control.launch``<br>

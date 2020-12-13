@@ -1,6 +1,8 @@
 # PRR robot with 2-finger end effector to throw object
 Course project for MEEN 612, Sping 2020
 <br>
+Objective: Design a robot capable of throwing objects into different targets. Simulate using ROS and Gazebo.
+<br>
 Texas A&M University
 <br><br>
 Rviz launch:<br>

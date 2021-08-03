@@ -6,7 +6,7 @@ Objective: Design a robot capable of throwing objects into different targets. Si
 Texas A&M University
 <br><br>
 Launch robot in Rviz:<br>
-`` roslaunch throwing_robot throwing_robot_rviz.launch``<br>
+`` roslaunch throwing_robot throwing_robot_rviz.launch``
 <br><br>
 Launch robot in Gazebo:<br>
 ``roslaunch throwing_robot_gazebo throwing_robot.launch ``

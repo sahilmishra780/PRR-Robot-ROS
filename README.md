@@ -1,7 +1,7 @@
 # PRR robot with 2-finger end effector to throw object
 Course project for MEEN 612, Sping 2020
 <br>
-<b>Objective<b>: Design a robot capable of throwing objects into different targets. Simulate using ROS and Gazebo.
+Objective: Design a robot capable of throwing objects into different targets. Simulate using ROS and Gazebo.
 <br>
 Texas A&M University
 <br><br>
@@ -13,7 +13,7 @@ Launch robot in Gazebo:<br>
 <br><br>
 Launch Joint Position Controller:<br>
 ``roslaunch throwing_robot_control throwing_robot_control.launch ``
-<br>
+<br><br>
 Move robot via CLI:<br>
 ``rostopic pub -1 /throwing_robot/joint1_position_controller/command std_msgs/Float64 "data: 0.3"``<br>
 ``rostopic pub -1 /throwing_robot/joint2_position_controller/command std_msgs/Float64 "data: 0.5"``<br>

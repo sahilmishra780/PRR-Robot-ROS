@@ -21,8 +21,10 @@ Move robot via CLI:<br>
 
 ## Run Throwing Simulation:<br>
 In a new terminal<br>
-``roslaunch throwing_robot_gazebo throwing_robot.launch``<br>
+``roslaunch throwing_robot_gazebo throwing_robot.launch``
+<br><br>
 Now in a new terminal <br>
-``roslaunch throwing_robot_control throwing_robot_control.launch``<br>
-Unpause the simulation in Gazebo and in a new terminal run <br>
-``rosrun throwing_robot_python simulate_throw.sh``<br>
+``roslaunch throwing_robot_control throwing_robot_control.launch``
+<br><br>
+Unpause the simulation in Gazebo and in a new terminal run<br>
+``rosrun throwing_robot_python simulate_throw.sh``
